@@ -1,8 +1,10 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import type { LandmarkType } from './districts';
+import { applyAnimeToonStyle } from '../kit/anime3d';
 
 // ---------------------------------------------------------------------------
-// 2.5D 动漫人物名场面展示模块（方案 A：高精透明立牌 + 发光底座 + 真 3D 招式特效）
+// 真 3D 动漫人物名场面展示模块（Blender 4.5 精雕 GLB + 四阶赛璐璐着色 + 法线外扩描边 + 真 3D 招式特效）
 //
 // 覆盖无限城六大原作名场面、共 17 位鬼灭核心角色：
 //  1. 鸣女高台：鸣女 + 恋柱·甘露寺蜜璃 + 蛇柱·伊黑小芭内
@@ -19,55 +21,45 @@ export type CharacterId =
   | 'tanjiro' | 'giyu' | 'akaza' | 'zenitsu'
   | 'kaigaku' | 'kokushibo' | 'gyomei' | 'sanemi' | 'muichiro';
 
-const CHAR_ASSETS: Record<CharacterId, { file: string; aspect: number }> = {
-  shinobu:   { file: 'characters/shinobu.png',   aspect: 0.897 },
-  douma:     { file: 'characters/douma.png',     aspect: 0.457 },
-  nakime:    { file: 'characters/nakime.png',    aspect: 0.825 },
-  muzan:     { file: 'characters/muzan.png',     aspect: 0.484 },
-  obanai:    { file: 'characters/obanai.png',    aspect: 0.648 },
-  kanao:     { file: 'characters/kanao.png',     aspect: 0.645 },
-  mitsuri:   { file: 'characters/mitsuri.svg',   aspect: 0.645 },
-  inosuke:   { file: 'characters/inosuke.svg',   aspect: 0.645 },
-  tanjiro:   { file: 'characters/tanjiro.svg',   aspect: 0.645 },
-  giyu:      { file: 'characters/giyu.svg',      aspect: 0.645 },
-  akaza:     { file: 'characters/akaza.svg',     aspect: 0.645 },
-  zenitsu:   { file: 'characters/zenitsu.svg',   aspect: 0.645 },
-  kaigaku:   { file: 'characters/kaigaku.svg',   aspect: 0.645 },
-  kokushibo: { file: 'characters/kokushibo.svg', aspect: 0.645 },
-  gyomei:    { file: 'characters/gyomei.svg',    aspect: 0.645 },
-  sanemi:    { file: 'characters/sanemi.svg',    aspect: 0.645 },
-  muichiro:  { file: 'characters/muichiro.svg',  aspect: 0.645 },
-};
-
-const texLoader = new THREE.TextureLoader();
-const texCache = new Map<CharacterId, THREE.Texture>();
-
-function getCharacterTexture(id: CharacterId): THREE.Texture {
-  const cached = texCache.get(id);
-  if (cached) return cached;
-  const tex = texLoader.load(CHAR_ASSETS[id].file);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  tex.anisotropy = 4;
-  texCache.set(id, tex);
-  return tex;
+interface CachedCharacter {
+  scene: THREE.Group;
+  height: number;
+  minY: number;
 }
 
-let auraTex: THREE.CanvasTexture | null = null;
-function getAuraTexture(): THREE.CanvasTexture {
-  if (auraTex) return auraTex;
-  const c = document.createElement('canvas');
-  c.width = 128;
-  c.height = 128;
-  const ctx = c.getContext('2d')!;
-  const grad = ctx.createRadialGradient(64, 64, 4, 64, 64, 62);
-  grad.addColorStop(0.0, 'rgba(255,255,255,0.9)');
-  grad.addColorStop(0.35, 'rgba(255,255,255,0.38)');
-  grad.addColorStop(0.7, 'rgba(255,255,255,0.08)');
-  grad.addColorStop(1.0, 'rgba(255,255,255,0.0)');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, 128, 128);
-  auraTex = new THREE.CanvasTexture(c);
-  return auraTex;
+const gltfLoader = new GLTFLoader();
+const modelCache = new Map<CharacterId, Promise<CachedCharacter>>();
+
+function loadCharacterTemplate(id: CharacterId): Promise<CachedCharacter> {
+  const cached = modelCache.get(id);
+  if (cached) return cached;
+
+  const p = new Promise<CachedCharacter>((resolve, reject) => {
+    gltfLoader.load(
+      `models/${id}.glb`,
+      (gltf) => {
+        const root = gltf.scene;
+        applyAnimeToonStyle(root, {
+          outlineWidth: 0.0052,
+          outlineColor: 0x160e1c,
+          fog: true,
+          albedoScale: 0.92,
+        });
+        root.updateMatrixWorld(true);
+        const box = new THREE.Box3().setFromObject(root);
+        const height = Math.max(0.5, box.max.y - box.min.y);
+        resolve({ scene: root, height, minY: box.min.y });
+      },
+      undefined,
+      (err) => {
+        console.warn(`[Characters] Failed to load models/${id}.glb:`, err);
+        reject(err);
+      }
+    );
+  });
+
+  modelCache.set(id, p);
+  return p;
 }
 
 interface DioramaAnim {
@@ -97,7 +89,7 @@ export function updateCharacterEffects(t: number): void {
   }
 }
 
-interface StandeeOpts {
+interface FigurineOpts {
   id: CharacterId;
   height: number;
   x: number;
@@ -108,49 +100,19 @@ interface StandeeOpts {
   pedestalRadius?: number;
 }
 
-function buildStandee(
-  opts: StandeeOpts,
+function buildFigurine(
+  opts: FigurineOpts,
   disposables: THREE.BufferGeometry[]
 ): THREE.Group {
   const g = new THREE.Group();
   g.position.set(opts.x, opts.y, opts.z);
   g.rotation.y = opts.rotY;
 
-  const h = opts.height;
-  const w = h * CHAR_ASSETS[opts.id].aspect;
+  const r = opts.pedestalRadius ?? 1.45;
 
-  const cardGeo = new THREE.PlaneGeometry(w, h);
-  cardGeo.translate(0, h * 0.5 + 0.08, 0);
-  disposables.push(cardGeo);
-
-  const cardMat = new THREE.MeshBasicMaterial({
-    map: getCharacterTexture(opts.id),
-    transparent: true,
-    alphaTest: 0.14,
-    side: THREE.DoubleSide,
-    color: 0xfff8f0,
-    fog: true,
-  });
-  g.add(new THREE.Mesh(cardGeo, cardMat));
-
-  const auraGeo = new THREE.PlaneGeometry(w * 1.45, h * 1.2);
-  auraGeo.translate(0, h * 0.52, -0.14);
-  disposables.push(auraGeo);
-  const auraMat = new THREE.MeshBasicMaterial({
-    map: getAuraTexture(),
-    color: opts.accentColor,
-    transparent: true,
-    opacity: 0.34,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-    side: THREE.DoubleSide,
-    fog: true,
-  });
-  g.add(new THREE.Mesh(auraGeo, auraMat));
-
-  const r = opts.pedestalRadius ?? Math.max(w * 0.45, 1.15);
-  const baseGeo = new THREE.CylinderGeometry(r, r * 1.06, 0.1, 24);
-  baseGeo.translate(0, 0.05, 0);
+  // Translucent glowing acrylic-style pedestal disc
+  const baseGeo = new THREE.CylinderGeometry(r, r * 1.06, 0.12, 28);
+  baseGeo.translate(0, 0.06, 0);
   disposables.push(baseGeo);
   const baseMat = new THREE.MeshBasicMaterial({
     color: opts.accentColor,
@@ -161,9 +123,10 @@ function buildStandee(
   });
   g.add(new THREE.Mesh(baseGeo, baseMat));
 
-  const ringGeo = new THREE.RingGeometry(r * 0.92, r * 1.06, 32);
+  // Additive glowing rim ring
+  const ringGeo = new THREE.RingGeometry(r * 0.9, r * 1.06, 36);
   ringGeo.rotateX(-Math.PI / 2);
-  ringGeo.translate(0, 0.11, 0);
+  ringGeo.translate(0, 0.13, 0);
   disposables.push(ringGeo);
   const ringMat = new THREE.MeshBasicMaterial({
     color: opts.accentColor,
@@ -176,6 +139,19 @@ function buildStandee(
   });
   g.add(new THREE.Mesh(ringGeo, ringMat));
 
+  // Lazy-attach True-3D GLB figurine scaled to exact monumental height
+  loadCharacterTemplate(opts.id)
+    .then((tpl) => {
+      const clone = tpl.scene.clone(true);
+      const sc = opts.height / tpl.height;
+      clone.scale.setScalar(sc);
+      clone.position.y = 0.12 - tpl.minY * sc;
+      g.add(clone);
+    })
+    .catch(() => {
+      // Already logged in loadCharacterTemplate
+    });
+
   return g;
 }
 
@@ -185,14 +161,14 @@ function buildNakimeDiorama(parent: THREE.Group, disposables: THREE.BufferGeomet
   root.visible = charactersVisible;
   const y = -2;
 
-  root.add(buildStandee({
+  root.add(buildFigurine({
     id: 'nakime', height: 4.1, x: 0, y: y + 0.98, z: 0.7, rotY: 0, accentColor: 0xff6e38, pedestalRadius: 1.9,
   }, disposables));
-  root.add(buildStandee({
-    id: 'mitsuri', height: 4.4, x: -5.8, y: y + 0.6, z: 5.6, rotY: -0.45, accentColor: 0xff7ac4, pedestalRadius: 1.45,
+  root.add(buildFigurine({
+    id: 'mitsuri', height: 4.35, x: -5.8, y: y + 0.6, z: 5.6, rotY: 2.05, accentColor: 0xff7ac4, pedestalRadius: 1.45,
   }, disposables));
-  root.add(buildStandee({
-    id: 'obanai', height: 4.4, x: 5.8, y: y + 0.2, z: 5.4, rotY: 0.45, accentColor: 0xc2a8ff, pedestalRadius: 1.45,
+  root.add(buildFigurine({
+    id: 'obanai', height: 4.35, x: 5.8, y: y + 0.2, z: 5.4, rotY: -2.05, accentColor: 0xc2a8ff, pedestalRadius: 1.45,
   }, disposables));
 
   const ringGeo = new THREE.TorusGeometry(1.0, 0.045, 8, 48);
@@ -253,8 +229,8 @@ function buildMuzanDiorama(parent: THREE.Group, disposables: THREE.BufferGeometr
   root.visible = charactersVisible;
   const y0 = -11;
 
-  root.add(buildStandee({
-    id: 'muzan', height: 5.15, x: 0, y: y0 + 1.32, z: 0.65, rotY: 0, accentColor: 0xe62238, pedestalRadius: 1.65,
+  root.add(buildFigurine({
+    id: 'muzan', height: 5.1, x: 0, y: y0 + 1.32, z: 0.65, rotY: 0, accentColor: 0xe62238, pedestalRadius: 1.65,
   }, disposables));
 
   const wispGeo = new THREE.BoxGeometry(0.08, 1.35, 0.08);
@@ -290,22 +266,26 @@ function buildDoumaStandoff(parent: THREE.Group, disposables: THREE.BufferGeomet
   root.visible = charactersVisible;
   const y = -4;
 
-  root.add(buildStandee({
-    id: 'shinobu', height: 4.35, x: -0.7, y: y + 3.45, z: 10.4, rotY: -0.22, accentColor: 0xb066ff, pedestalRadius: 1.5,
+  root.add(buildFigurine({
+    id: 'shinobu', height: 4.3, x: -1.1, y: y + 3.45, z: 10.2, rotY: 2.55, accentColor: 0xb066ff, pedestalRadius: 1.5,
   }, disposables));
-  root.add(buildStandee({
-    id: 'inosuke', height: 4.4, x: -5.4, y: y + 2.4, z: 7.2, rotY: -0.5, accentColor: 0x6ea8ff, pedestalRadius: 1.4,
+  root.add(buildFigurine({
+    id: 'inosuke', height: 4.35, x: -5.4, y: y + 2.4, z: 7.2, rotY: 1.95, accentColor: 0x6ea8ff, pedestalRadius: 1.4,
   }, disposables));
-  root.add(buildStandee({
-    id: 'kanao', height: 4.2, x: 5.2, y: y + 2.1, z: 7.4, rotY: 0.48, accentColor: 0xff9ad0, pedestalRadius: 1.35,
+  root.add(buildFigurine({
+    id: 'kanao', height: 4.15, x: 5.2, y: y + 2.1, z: 7.4, rotY: -1.95, accentColor: 0xff9ad0, pedestalRadius: 1.35,
   }, disposables));
-  root.add(buildStandee({
-    id: 'douma', height: 5.05, x: 0.5, y: y + 2.08, z: 0.6, rotY: 0.16, accentColor: 0x62ecff, pedestalRadius: 1.55,
+  root.add(buildFigurine({
+    id: 'douma', height: 5.0, x: 0.5, y: y + 2.08, z: 0.6, rotY: 0.08, accentColor: 0x62ecff, pedestalRadius: 1.55,
   }, disposables));
 
+  // Shaped 3D butterfly wings (replaces rectangular plane cards)
   interface Butterfly { pivot: THREE.Group; leftW: THREE.Mesh; rightW: THREE.Mesh; phase: number; speed: number; tOffset: number; arcRadius: number; }
-  const wingGeo = new THREE.PlaneGeometry(0.42, 0.56);
-  wingGeo.translate(0.21, 0, 0);
+  const wingShape = new THREE.Shape();
+  wingShape.moveTo(0, 0);
+  wingShape.bezierCurveTo(0.18, 0.34, 0.48, 0.31, 0.4, 0.06);
+  wingShape.bezierCurveTo(0.45, -0.14, 0.22, -0.32, 0, -0.08);
+  const wingGeo = new THREE.ShapeGeometry(wingShape, 8);
   disposables.push(wingGeo);
   const bMatPurple = new THREE.MeshBasicMaterial({ color: 0xd088ff, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
   const bMatCyan = new THREE.MeshBasicMaterial({ color: 0x70f4ff, transparent: true, opacity: 0.88, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
@@ -352,7 +332,7 @@ function buildDoumaStandoff(parent: THREE.Group, disposables: THREE.BufferGeomet
         const u = (t * 0.14 + b.tOffset) % 1;
         const spiralA = u * Math.PI * 3.5 + b.phase;
         const r = b.arcRadius * (0.65 + 0.55 * Math.sin(u * Math.PI));
-        b.pivot.position.set(-0.7 + u * 1.2 + Math.cos(spiralA) * r, y + 4.4 + Math.sin(u * Math.PI) * 2.4 + Math.sin(t * 2.0 + b.phase) * 0.35, 11.2 - u * 8.6 + Math.sin(spiralA) * r * 0.45);
+        b.pivot.position.set(-1.1 + u * 1.6 + Math.cos(spiralA) * r, y + 4.4 + Math.sin(u * Math.PI) * 2.4 + Math.sin(t * 2.0 + b.phase) * 0.35, 10.8 - u * 8.4 + Math.sin(spiralA) * r * 0.45);
         b.pivot.rotation.set(0.25, -spiralA, Math.sin(t * 2 + b.phase) * 0.25);
         const flap = 0.25 + Math.abs(Math.sin(t * b.speed + b.phase)) * 0.95;
         b.leftW.rotation.y = flap;
@@ -379,14 +359,14 @@ function buildAkazaDiorama(parent: THREE.Group, disposables: THREE.BufferGeometr
   root.visible = charactersVisible;
   const y = -4;
 
-  root.add(buildStandee({
-    id: 'tanjiro', height: 4.45, x: -4.2, y: y + 0.08, z: 6.2, rotY: -0.32, accentColor: 0xff6a28, pedestalRadius: 1.5,
+  root.add(buildFigurine({
+    id: 'tanjiro', height: 4.4, x: -4.2, y: y + 0.08, z: 6.2, rotY: 2.18, accentColor: 0xff6a28, pedestalRadius: 1.5,
   }, disposables));
-  root.add(buildStandee({
-    id: 'giyu', height: 4.85, x: 4.4, y: y + 0.08, z: 5.8, rotY: 0.32, accentColor: 0x3ea8ff, pedestalRadius: 1.5,
+  root.add(buildFigurine({
+    id: 'giyu', height: 4.8, x: 4.4, y: y + 0.08, z: 5.8, rotY: -2.18, accentColor: 0x3ea8ff, pedestalRadius: 1.5,
   }, disposables));
-  root.add(buildStandee({
-    id: 'akaza', height: 4.8, x: 0, y: y + 0.08, z: -2.2, rotY: 0, accentColor: 0x38d0ff, pedestalRadius: 1.75,
+  root.add(buildFigurine({
+    id: 'akaza', height: 4.75, x: 0, y: y + 0.08, z: -2.2, rotY: 0, accentColor: 0x38d0ff, pedestalRadius: 1.75,
   }, disposables));
 
   const compassGeo = new THREE.TorusGeometry(6.8, 0.1, 8, 48);
@@ -434,11 +414,11 @@ function buildZenitsuDiorama(parent: THREE.Group, disposables: THREE.BufferGeome
   root.visible = charactersVisible;
   const y = -2;
 
-  root.add(buildStandee({
-    id: 'zenitsu', height: 4.35, x: -0.6, y: y + 1.78, z: 6.5, rotY: -0.2, accentColor: 0xffd838, pedestalRadius: 1.5,
+  root.add(buildFigurine({
+    id: 'zenitsu', height: 4.3, x: -0.6, y: y + 1.78, z: 6.5, rotY: 2.75, accentColor: 0xffd838, pedestalRadius: 1.5,
   }, disposables));
-  root.add(buildStandee({
-    id: 'kaigaku', height: 4.75, x: 0.6, y: y + 1.72, z: -6.8, rotY: 0.2, accentColor: 0x8c4eff, pedestalRadius: 1.55,
+  root.add(buildFigurine({
+    id: 'kaigaku', height: 4.7, x: 0.6, y: y + 1.72, z: -6.8, rotY: 0.15, accentColor: 0x8c4eff, pedestalRadius: 1.55,
   }, disposables));
 
   const boltGeo = new THREE.BoxGeometry(0.16, 0.16, 2.2);
@@ -480,17 +460,17 @@ function buildKokushiboDiorama(parent: THREE.Group, disposables: THREE.BufferGeo
   root.visible = charactersVisible;
   const y = -4;
 
-  root.add(buildStandee({
-    id: 'kokushibo', height: 5.4, x: 0, y: y + 1.15, z: -7.8, rotY: 0, accentColor: 0xe04898, pedestalRadius: 1.9,
+  root.add(buildFigurine({
+    id: 'kokushibo', height: 5.3, x: 0, y: y + 1.15, z: -7.8, rotY: 0, accentColor: 0xe04898, pedestalRadius: 1.9,
   }, disposables));
-  root.add(buildStandee({
-    id: 'gyomei', height: 5.55, x: 0, y: y + 0.08, z: 6.4, rotY: 0, accentColor: 0x98cc64, pedestalRadius: 1.85,
+  root.add(buildFigurine({
+    id: 'gyomei', height: 5.45, x: 0, y: y + 0.08, z: 6.4, rotY: 2.85, accentColor: 0x98cc64, pedestalRadius: 1.85,
   }, disposables));
-  root.add(buildStandee({
-    id: 'sanemi', height: 4.85, x: -7.2, y: y + 0.08, z: 3.4, rotY: -0.45, accentColor: 0x48e88a, pedestalRadius: 1.55,
+  root.add(buildFigurine({
+    id: 'sanemi', height: 4.8, x: -7.2, y: y + 0.08, z: 3.4, rotY: 2.05, accentColor: 0x48e88a, pedestalRadius: 1.55,
   }, disposables));
-  root.add(buildStandee({
-    id: 'muichiro', height: 4.25, x: 7.0, y: y + 0.08, z: 3.6, rotY: 0.45, accentColor: 0x7ef2e8, pedestalRadius: 1.4,
+  root.add(buildFigurine({
+    id: 'muichiro', height: 4.2, x: 7.0, y: y + 0.08, z: 3.6, rotY: -2.05, accentColor: 0x7ef2e8, pedestalRadius: 1.4,
   }, disposables));
 
   const crescentGeo = new THREE.TorusGeometry(0.62, 0.08, 6, 16, Math.PI * 1.15);

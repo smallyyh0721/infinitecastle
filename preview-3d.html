@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>無限城 · 3D 人物与鬼灭鎹鸦 360° 环绕预览展台</title>
+  <style>
+    :root {
+      --gold: #d4ad42;
+      --gold-dim: #8c7026;
+      --crimson: #b83228;
+      --ink: #efe4cf;
+      --ink-dim: #a89b84;
+      --panel: rgba(14, 10, 22, 0.84);
+      --line: rgba(212, 173, 66, 0.35);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      background: #0a0712;
+      font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, serif;
+      color: var(--ink);
+      user-select: none;
+    }
+    #viewport { position: fixed; inset: 0; }
+    canvas { display: block; width: 100%; height: 100%; }
+
+    .topbar {
+      position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;
+      background: var(--panel); border: 1px solid var(--line);
+      padding: 8px 14px; backdrop-filter: blur(8px); z-index: 20;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+    }
+    .tab-btn {
+      background: rgba(120, 28, 24, 0.22); color: var(--ink-dim);
+      border: 1px solid rgba(212, 173, 66, 0.25);
+      padding: 7px 14px; font-family: inherit; font-size: 13px; letter-spacing: 0.1em;
+      cursor: pointer; transition: all 0.22s; white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--ink); border-color: var(--gold-dim); }
+    .tab-btn.active {
+      background: linear-gradient(180deg, rgba(168, 42, 30, 0.65), rgba(112, 24, 20, 0.65));
+      color: #fff2d4; border-color: var(--gold);
+      box-shadow: 0 0 14px rgba(212, 173, 66, 0.28);
+    }
+
+    .badge {
+      position: fixed; top: 16px; left: 18px; z-index: 20;
+      background: var(--panel); border: 1px solid var(--line);
+      padding: 10px 14px; backdrop-filter: blur(8px); max-width: 290px;
+    }
+    .badge h1 {
+      font-size: 16px; font-weight: 400; letter-spacing: 0.2em; color: var(--gold);
+    }
+    .badge p {
+      margin-top: 5px; font-size: 12px; color: var(--ink-dim); line-height: 1.55;
+    }
+    .badge .stats {
+      margin-top: 7px; font-size: 11px; color: #7de0b0; letter-spacing: 0.08em;
+    }
+
+    .controls {
+      position: fixed; top: 16px; right: 18px; z-index: 20;
+      background: var(--panel); border: 1px solid var(--line);
+      padding: 12px 14px; width: 224px; backdrop-filter: blur(8px);
+      display: flex; flex-direction: column; gap: 9px;
+    }
+    .ctrl-title {
+      font-size: 11px; letter-spacing: 0.24em; color: var(--gold);
+      border-bottom: 1px solid var(--line); padding-bottom: 6px;
+    }
+    .ctrl-row {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: var(--ink-dim); gap: 8px;
+    }
+    .ctrl-row select {
+      background: rgba(8, 6, 16, 0.9); color: var(--ink);
+      border: 1px solid var(--line); font-family: inherit; font-size: 11.5px;
+      padding: 4px 6px; width: 122px;
+    }
+    .ctrl-row input[type="checkbox"] {
+      width: 16px; height: 16px; accent-color: var(--crimson); cursor: pointer;
+    }
+    .angle-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 2px;
+    }
+    .mini-btn {
+      background: rgba(120, 28, 24, 0.25); color: var(--ink);
+      border: 1px solid var(--line); font-family: inherit; font-size: 11.5px;
+      padding: 5px 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .mini-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer-hint {
+      position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+      background: rgba(10, 7, 18, 0.78); border: 1px solid var(--line);
+      padding: 7px 18px; font-size: 12px; color: var(--ink-dim); letter-spacing: 0.1em;
+      z-index: 20; backdrop-filter: blur(6px); white-space: nowrap;
+    }
+    .footer-hint b { color: var(--gold); font-weight: 400; }
+
+    #compare-labels {
+      position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%);
+      display: none; gap: 160px; z-index: 15; pointer-events: none;
+    }
+    #compare-labels.on { display: flex; }
+    .cmp-tag {
+      background: rgba(14, 10, 22, 0.85); border: 1px solid var(--line);
+      padding: 6px 14px; font-size: 13px; letter-spacing: 0.14em; color: var(--ink);
+    }
+    .cmp-tag.new { border-color: var(--gold); color: #ffe4a0; }
+  </style>
+</head>
+<body>
+  <div id="viewport"></div>
+
+  <div class="badge">
+    <h1>無限城 · 3D 重塑预览</h1>
+    <p id="scene-desc">Blender 4.5 真 3D 建模 + 三渲二卡通着色 + 日漫黑边描边，彻底告别 2.5D 纸片感。</p>
+    <div class="stats" id="mesh-stats">加载 3D GLB 模型中...</div>
+  </div>
+
+  <div class="topbar">
+    <button class="tab-btn active" data-mode="standoff">① 蝴蝶忍 vs 童磨 · 3D 对峙</button>
+    <button class="tab-btn" data-mode="tanjiro">② 灶门炭治郎 · 3D 雕像</button>
+    <button class="tab-btn" data-mode="crow">③ 新版 3D 鬼灭鎹鸦 vs 旧版对比</button>
+    <button class="tab-btn" data-mode="all">④ 全员 3D 合集展台</button>
+  </div>
+
+  <div class="controls">
+    <div class="ctrl-title">渲染与视角检视</div>
+    <div class="ctrl-row">
+      <label>360° 自动环绕</label>
+      <input id="c-orbit" type="checkbox" checked />
+    </div>
+    <div class="ctrl-row">
+      <label>日漫墨线描边</label>
+      <input id="c-outline" type="checkbox" checked />
+    </div>
+    <div class="ctrl-row">
+      <label>线框检视 (真3D)</label>
+      <input id="c-wire" type="checkbox" />
+    </div>
+    <div class="ctrl-row">
+      <label>着色风格</label>
+      <select id="c-shade">
+        <option value="toon">三渲二卡通</option>
+        <option value="pbr">精细 PBR</option>
+      </select>
+    </div>
+    <div class="ctrl-row">
+      <label>灯光氛围</label>
+      <select id="c-light">
+        <option value="castle">无限城暖金</option>
+        <option value="lotus">冰莲冷月</option>
+        <option value="studio">影棚白光</option>
+      </select>
+    </div>
+    <div class="ctrl-title" style="margin-top:4px">快捷检视角度</div>
+    <div class="angle-grid">
+      <button class="mini-btn" data-cam="front">正面视角</button>
+      <button class="mini-btn" data-cam="side">侧身 90°</button>
+      <button class="mini-btn" data-cam="back">背面羽织</button>
+      <button class="mini-btn" data-cam="top">45° 俯视</button>
+    </div>
+  </div>
+
+  <div id="compare-labels">
+    <div class="cmp-tag">旧版 · 方块程序化乌鸦</div>
+    <div class="cmp-tag new">新版 · Blender 4.5 精雕鬼灭鎹鸦</div>
+  </div>
+
+  <div class="footer-hint">
+    <b>左键拖拽</b> 360° 自由环绕 · <b>滚轮</b> 缩放近看细节 · <b>右键拖拽</b> 平移 · 本页为独立预览，未改动主城代码
+  </div>
+
+  <script type="module" src="/src/dev/preview3d.ts"></script>
+</body>
+</html>

@@ -115,7 +115,6 @@ export class UI {
             : '<span><b>TAB</b> 切换六大名场面（Shift+TAB 反向）</span><span><b>W / S / A / D</b> 名场面自由前后左右探索（翱翔时加速/转向）</span><span><b>空格 / Shift</b> 升降 / 振翅刹车</span><span><b>Q / E</b> 横滚</span><span><b>P</b> 漫游/翱翔切换</span><span><b>B</b> 琵琶异变</span><span><b>C</b> 视角</span><span><b>H</b> 摄影隐藏</span><span><b>ESC</b> 神社设定</span>'
         }</div>
         <div class="seed-line">世界种子 · ${this.esc(ini.seed)}</div>
-        <a id="gh-link" href="https://github.com/Thre4dripper/Infinity-Castle-ThreeJs" target="_blank" rel="noopener">基于 MIT 开源项目 Infinity-Castle-ThreeJs 二次开发</a>
       </div>
       <div id="hud">
         <div class="hud-tl">
