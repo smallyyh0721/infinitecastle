@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <pattern id="kaigakuPat" width="46" height="46" patternUnits="userSpaceOnUse">
+      <rect width="46" height="46" fill="#181520"/>
+      <circle cx="23" cy="23" r="10" fill="none" stroke="#d49c36" stroke-width="3.5"/>
+      <circle cx="23" cy="23" r="3.5" fill="#d49c36"/>
+    </pattern>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    
+    <!-- Left leg -->
+    <path d="M 275 560 L 222 755 L 292 765 L 324 615 Z" fill="url(#uniform)"/>
+    <path d="M 232 755 L 236 910 L 280 910 L 284 760 Z" fill="#242230"/>
+    <path d="M 234 790 L 282 785 M 234 825 L 281 820 M 235 860 L 280 855 M 236 890 L 280 888" stroke="#525668" stroke-width="3"/>
+    <path d="M 232 910 L 212 960 Q 246 975 284 962 L 280 910 Z" fill="#231f2e"/>
+    <path d="M 208 958 Q 248 976 290 960 L 286 972 Q 248 988 206 970 Z" fill="#c9ae82"/>
+    <path d="M 234 952 Q 248 936 268 952" fill="none" stroke="#d49c36" stroke-width="6"/>
+    <!-- Right leg -->
+    <path d="M 385 560 L 438 755 L 368 765 L 336 615 Z" fill="url(#uniform)"/>
+    <path d="M 376 760 L 380 910 L 424 910 L 428 755 Z" fill="#242230"/>
+    <path d="M 378 785 L 426 790 M 379 820 L 426 825 M 380 855 L 425 860 M 380 888 L 424 890" stroke="#525668" stroke-width="3"/>
+    <path d="M 380 910 L 376 962 Q 414 975 448 960 L 428 910 Z" fill="#231f2e"/>
+    <path d="M 370 960 Q 412 976 452 958 L 454 970 Q 412 988 374 972 Z" fill="#c9ae82"/>
+    <path d="M 392 952 Q 412 936 426 952" fill="none" stroke="#d49c36" stroke-width="6"/>
+    
+    <!-- Dark hakama & black-gold magatama vest -->
+    <path d="M 250 296 L 410 296 L 422 680 L 238 680 Z" fill="#16141e"/>
+    <path d="M 244 290 L 416 290 L 406 540 L 254 540 Z" fill="url(#kaigakuPat)"/>
+    <rect x="252" y="510" width="156" height="28" rx="4" fill="#d49c36"/>
+    <!-- Arms & Jet-Black Thunder Katana -->
+    <path d="M 246 305 L 152 448 L 195 478 L 262 378 Z" fill="#1b1826"/>
+    <path d="M 414 305 L 498 442 L 456 472 L 396 378 Z" fill="#1b1826"/>
+    <path d="M 162 462 L 38 228 L 54 220 L 178 454 Z" fill="#12101a" stroke="#42d4e8" stroke-width="3.5"/>
+    <ellipse cx="172" cy="462" rx="20" ry="17" fill="url(#paleSkin)"/>
+    <ellipse cx="476" cy="456" rx="20" ry="17" fill="url(#paleSkin)"/>
+    <!-- Neck & Head -->
+    <rect x="306" y="250" width="48" height="50" rx="14" fill="url(#paleSkin)"/>
+    <path d="M 274 168 Q 274 268 330 278 Q 386 268 386 168 Q 386 110 330 110 Q 274 110 274 168 Z" fill="url(#paleSkin)"/>
+    <!-- Black flame demon marks on cheeks -->
+    <path d="M 276 225 L 298 232 L 286 248 M 384 225 L 362 232 L 374 248" fill="none" stroke="#181422" stroke-width="5"/>
+    
+        <ellipse cx="306" cy="198" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="306" cy="199" rx="8.5" ry="9.5" fill="#38d8c8" stroke="none"/>
+        <ellipse cx="306" cy="199" rx="2.5" ry="9" fill="#120810" stroke="none"/>
+        <circle cx="303" cy="195" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 292 193 Q 306 183 320 194" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 320 173 L 293 187" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+        <ellipse cx="354" cy="198" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="354" cy="199" rx="8.5" ry="9.5" fill="#38d8c8" stroke="none"/>
+        <ellipse cx="354" cy="199" rx="2.5" ry="9" fill="#120810" stroke="none"/>
+        <circle cx="351" cy="195" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 340 193 Q 354 183 368 194" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 340 173 L 367 187" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+      <path d="M 328 214 L 332 220" fill="none" stroke="#9e7866" stroke-width="2.5"/>
+      <path d="M 319 232 Q 330 229 341 233" fill="none" stroke="#14101c" stroke-width="3.2"/>
+    
+    <!-- Spiky black hair -->
+    <path d="M 256 205 L 236 146 L 268 122 L 288 80 L 330 98 L 374 78 L 392 122 L 424 148 L 402 204 L 380 162 L 352 178 L 330 144 L 306 178 L 280 162 Z" fill="#121118"/>
+    
+  </g>
+</svg>

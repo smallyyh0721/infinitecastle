@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a6c52"/>
+      <stop offset="100%" stop-color="#523b2a"/>
+    </linearGradient>
+    <linearGradient id="boar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9ca0aa"/>
+      <stop offset="100%" stop-color="#5c5e68"/>
+    </linearGradient>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    
+    <!-- Left leg -->
+    <path d="M 275 560 L 210 755 L 280 765 L 324 615 Z" fill="url(#uniform)"/>
+    <path d="M 220 755 L 224 910 L 268 910 L 272 760 Z" fill="#755a44"/>
+    <path d="M 222 790 L 270 785 M 222 825 L 269 820 M 223 860 L 268 855 M 224 890 L 268 888" stroke="#525668" stroke-width="3"/>
+    <path d="M 220 910 L 200 960 Q 234 975 272 962 L 268 910 Z" fill="#231f2e"/>
+    <path d="M 196 958 Q 236 976 278 960 L 274 972 Q 236 988 194 970 Z" fill="#c9ae82"/>
+    <path d="M 222 952 Q 236 936 256 952" fill="none" stroke="#4a382a" stroke-width="6"/>
+    <!-- Right leg -->
+    <path d="M 385 560 L 450 755 L 380 765 L 336 615 Z" fill="url(#uniform)"/>
+    <path d="M 388 760 L 392 910 L 436 910 L 440 755 Z" fill="#755a44"/>
+    <path d="M 390 785 L 438 790 M 391 820 L 438 825 M 392 855 L 437 860 M 392 888 L 436 890" stroke="#525668" stroke-width="3"/>
+    <path d="M 392 910 L 388 962 Q 426 975 460 960 L 440 910 Z" fill="#231f2e"/>
+    <path d="M 382 960 Q 424 976 464 958 L 466 970 Q 424 988 386 972 Z" fill="#c9ae82"/>
+    <path d="M 404 952 Q 424 936 438 952" fill="none" stroke="#4a382a" stroke-width="6"/>
+    
+    <!-- Brown deer-fur waist wrap -->
+    <path d="M 244 485 L 416 485 L 434 595 L 380 572 L 330 605 L 280 572 L 226 595 Z" fill="url(#fur)"/>
+    <!-- Muscular shirtless torso -->
+    <path d="M 242 292 L 418 292 L 402 496 L 258 496 Z" fill="url(#skin)"/>
+    <path d="M 270 365 Q 300 385 330 365 Q 360 385 390 365 M 330 375 L 330 475" fill="none" stroke="#c89a7c" stroke-width="4"/>
+    <!-- Wild muscular arms -->
+    <path d="M 242 302 L 135 415 L 172 458 L 256 368 Z" fill="url(#skin)"/>
+    <path d="M 418 302 L 525 415 L 488 458 L 404 368 Z" fill="url(#skin)"/>
+    <!-- Dual chipped serrated indigo-gray katanas -->
+    <path d="M 150 438 L 35 230 L 58 220 L 172 428 Z" fill="#6e84a8"/>
+    <path d="M 510 438 L 625 230 L 602 220 L 488 428 Z" fill="#6e84a8"/>
+    <ellipse cx="156" cy="442" rx="22" ry="18" fill="url(#skin)"/>
+    <ellipse cx="504" cy="442" rx="22" ry="18" fill="url(#skin)"/>
+    <!-- Iconic Boar Head Mask -->
+    <path d="M 242 210 Q 240 105 330 98 Q 420 105 418 210 Q 418 286 330 292 Q 242 286 242 210 Z" fill="url(#boar)"/>
+    <!-- Boar ears -->
+    <polygon points="258,136 226,72 296,112" fill="#70727e"/>
+    <polygon points="402,136 434,72 364,112" fill="#70727e"/>
+    <!-- Bright blue boar eyes -->
+    <ellipse cx="292" cy="186" rx="18" ry="14" fill="#ffffff"/>
+    <circle cx="294" cy="186" r="10" fill="#2894f0" stroke="none"/>
+    <circle cx="294" cy="186" r="4.5" fill="#101824" stroke="none"/>
+    <ellipse cx="368" cy="186" rx="18" ry="14" fill="#ffffff"/>
+    <circle cx="366" cy="186" r="10" fill="#2894f0" stroke="none"/>
+    <circle cx="366" cy="186" r="4.5" fill="#101824" stroke="none"/>
+    <!-- Pink boar snout & white tusks -->
+    <ellipse cx="330" cy="242" rx="34" ry="26" fill="#f09ca8"/>
+    <ellipse cx="318" cy="242" rx="6" ry="10" fill="#52242c" stroke="none"/>
+    <ellipse cx="342" cy="242" rx="6" ry="10" fill="#52242c" stroke="none"/>
+    <polygon points="282,262 260,214 298,252" fill="#fffdf6"/>
+    <polygon points="378,262 400,214 362,252" fill="#fffdf6"/>
+    
+  </g>
+</svg>

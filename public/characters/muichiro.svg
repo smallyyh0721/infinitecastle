@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <linearGradient id="muiHair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14161e"/>
+      <stop offset="68%" stop-color="#1a222c"/>
+      <stop offset="100%" stop-color="#6ae8d8"/>
+    </linearGradient>
+    <linearGradient id="mistBlade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#a8e8f0"/>
+    </linearGradient>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    <!-- Long straight black-to-mint hair flowing down back -->
+    <path d="M 252 175 L 222 615 Q 330 645 438 615 L 408 175 Z" fill="url(#muiHair)"/>
+    <!-- Loose wide-legged dark navy uniform -->
+    <path d="M 256 540 L 182 918 L 312 922 L 330 680 L 348 922 L 478 918 L 404 540 Z" fill="#171b2a"/>
+    <ellipse cx="248" cy="952" rx="34" ry="18" fill="#c9ae82"/>
+    <ellipse cx="412" cy="952" rx="34" ry="18" fill="#c9ae82"/>
+    <!-- Loose oversized sleeves & uniform torso -->
+    <path d="M 244 298 L 416 298 L 406 555 L 254 555 Z" fill="#191e2e"/>
+    <path d="M 246 306 L 136 476 L 218 508 L 266 402 Z" fill="#191e2e"/>
+    <path d="M 414 306 L 524 476 L 442 508 L 394 402 Z" fill="#191e2e"/>
+    <rect x="256" y="518" width="148" height="22" rx="4" fill="#f0f4f8"/>
+    <!-- White Mist Katana -->
+    <path d="M 382 465 L 615 365 L 622 382 L 390 482 Z" fill="url(#mistBlade)"/>
+    <rect x="372" y="454" width="18" height="36" rx="4" fill="#d4b452" transform="rotate(-22 381 472)"/>
+    <ellipse cx="366" cy="476" rx="19" ry="16" fill="url(#skin)"/>
+    <ellipse cx="195" cy="485" rx="19" ry="16" fill="url(#skin)"/>
+    <!-- Neck & Serene Youthful Head -->
+    <rect x="308" y="254" width="44" height="48" rx="14" fill="url(#skin)"/>
+    <path d="M 276 172 Q 276 268 330 276 Q 384 268 384 172 Q 384 114 330 114 Q 276 114 276 172 Z" fill="url(#skin)"/>
+    
+        <ellipse cx="306" cy="202" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="306" cy="203" rx="8.5" ry="9.5" fill="#5ad4c8" stroke="none"/>
+        <circle cx="306" cy="203" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="303" cy="199" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 292 197 Q 306 187 320 198" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 320 186 L 293 182" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+        <ellipse cx="354" cy="202" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="354" cy="203" rx="8.5" ry="9.5" fill="#5ad4c8" stroke="none"/>
+        <circle cx="354" cy="203" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="351" cy="199" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 340 197 Q 354 187 368 198" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 340 186 L 367 182" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+      <path d="M 328 218 L 332 224" fill="none" stroke="#9e7866" stroke-width="2.5"/>
+      <path d="M 319 236 Q 330 233 341 237" fill="none" stroke="#14101c" stroke-width="3.2"/>
+    
+    <!-- Straight front bangs & side locks -->
+    <path d="M 258 212 Q 258 106 330 100 Q 402 106 402 212 L 386 168 L 368 188 L 352 152 L 330 184 L 308 152 L 292 188 L 274 168 Z" fill="#151820"/>
+    
+  </g>
+</svg>

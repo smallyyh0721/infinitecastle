@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <pattern id="kokuKimono" width="52" height="52" patternUnits="userSpaceOnUse">
+      <rect width="52" height="52" fill="#5c2458"/>
+      <polygon points="26,0 52,26 26,52 0,26" fill="#1a1420"/>
+    </pattern>
+    <linearGradient id="fleshBlade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c4425c"/>
+      <stop offset="100%" stop-color="#70182e"/>
+    </linearGradient>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    <!-- Long wild ponytail behind -->
+    <path d="M 330 110 C 445 125, 495 275, 468 430 L 418 395 C 430 290, 396 190, 330 165 Z" fill="#18121c"/>
+    <!-- Wide dark samurai hakama -->
+    <path d="M 244 505 L 175 935 L 315 942 L 330 650 L 345 942 L 485 935 L 416 505 Z" fill="#181622"/>
+    <ellipse cx="242" cy="956" rx="38" ry="18" fill="#c9ae82"/>
+    <ellipse cx="418" cy="956" rx="38" ry="18" fill="#c9ae82"/>
+    <!-- Purple-black geometric kimono -->
+    <path d="M 232 288 L 428 288 L 424 525 L 236 525 Z" fill="url(#kokuKimono)"/>
+    <path d="M 236 296 L 138 458 L 210 492 L 266 390 Z" fill="url(#kokuKimono)"/>
+    <path d="M 424 296 L 522 458 L 450 492 L 394 390 Z" fill="url(#kokuKimono)"/>
+    <rect x="242" y="485" width="176" height="36" fill="#2c2038"/>
+    <!-- Long Flesh-Eyed Demon Katana -->
+    <path d="M 210 475 L 622 250 L 634 270 L 222 495 Z" fill="url(#fleshBlade)"/>
+    <circle cx="340" cy="415" r="8" fill="#ffd447" stroke="#18101a" stroke-width="2.5"/>
+    <circle cx="430" cy="366" r="8" fill="#ffd447" stroke="#18101a" stroke-width="2.5"/>
+    <circle cx="520" cy="316" r="7" fill="#ffd447" stroke="#18101a" stroke-width="2.5"/>
+    <ellipse cx="205" cy="482" rx="22" ry="18" fill="url(#paleSkin)"/>
+    <ellipse cx="458" cy="472" rx="22" ry="18" fill="url(#paleSkin)"/>
+    <!-- Neck & Head -->
+    <rect x="304" y="246" width="52" height="50" rx="14" fill="url(#paleSkin)"/>
+    <path d="M 272 162 Q 272 266 330 278 Q 388 266 388 162 Q 388 104 330 104 Q 272 104 272 162 Z" fill="url(#paleSkin)"/>
+    <!-- Crimson Flame Marks -->
+    <path d="M 278 140 L 298 122 L 308 152 L 284 156 Z M 356 238 L 382 225 L 372 258 Z" fill="#8c1c30" stroke="none"/>
+    <!-- SIX iconic golden-red demon eyes (3 pairs stacked) -->
+    
+        <ellipse cx="306" cy="194" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="306" cy="195" rx="8.5" ry="9.5" fill="#f0b828" stroke="none"/>
+        <ellipse cx="306" cy="195" rx="2.5" ry="9" fill="#120810" stroke="none"/>
+        <circle cx="303" cy="191" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 292 189 Q 306 179 320 190" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 320 169 L 293 183" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+        <ellipse cx="354" cy="194" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="354" cy="195" rx="8.5" ry="9.5" fill="#f0b828" stroke="none"/>
+        <ellipse cx="354" cy="195" rx="2.5" ry="9" fill="#120810" stroke="none"/>
+        <circle cx="351" cy="191" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 340 189 Q 354 179 368 190" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 340 169 L 367 183" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+      <path d="M 328 210 L 332 216" fill="none" stroke="#9e7866" stroke-width="2.5"/>
+      <path d="M 319 228 Q 330 225 341 229" fill="none" stroke="#14101c" stroke-width="3.2"/>
+    
+    <ellipse cx="305" cy="170" rx="9" ry="6" fill="#f0b828" stroke="#14101c" stroke-width="2.5"/>
+    <ellipse cx="355" cy="170" rx="9" ry="6" fill="#f0b828" stroke="#14101c" stroke-width="2.5"/>
+    <ellipse cx="308" cy="218" rx="8" ry="5.5" fill="#f0b828" stroke="#14101c" stroke-width="2.5"/>
+    <ellipse cx="352" cy="218" rx="8" ry="5.5" fill="#f0b828" stroke="#14101c" stroke-width="2.5"/>
+    <!-- Spiky black-burgundy top hair -->
+    <path d="M 254 202 L 234 134 L 274 114 L 315 74 L 352 94 L 398 112 L 424 148 L 402 204 L 380 156 L 352 166 L 330 132 L 306 166 L 278 156 Z" fill="#1a111a"/>
+    
+  </g>
+</svg>

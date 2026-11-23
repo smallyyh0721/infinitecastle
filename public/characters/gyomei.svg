@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <linearGradient id="oliveHaori" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#587a42"/>
+      <stop offset="100%" stop-color="#354d28"/>
+    </linearGradient>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    <!-- Massive towering olive haori -->
+    <path d="M 192 272 L 102 685 L 268 702 L 280 315 Z" fill="url(#oliveHaori)"/>
+    <path d="M 468 272 L 558 685 L 392 702 L 380 315 Z" fill="url(#oliveHaori)"/>
+    
+    <!-- Left leg -->
+    <path d="M 275 560 L 214 755 L 284 765 L 324 615 Z" fill="url(#uniform)"/>
+    <path d="M 224 755 L 228 910 L 272 910 L 276 760 Z" fill="#eef0ea"/>
+    <path d="M 226 790 L 274 785 M 226 825 L 273 820 M 227 860 L 272 855 M 228 890 L 272 888" stroke="#525668" stroke-width="3"/>
+    <path d="M 224 910 L 204 960 Q 238 975 276 962 L 272 910 Z" fill="#231f2e"/>
+    <path d="M 200 958 Q 240 976 282 960 L 278 972 Q 240 988 198 970 Z" fill="#c9ae82"/>
+    <path d="M 226 952 Q 240 936 260 952" fill="none" stroke="#4a6638" stroke-width="6"/>
+    <!-- Right leg -->
+    <path d="M 385 560 L 446 755 L 376 765 L 336 615 Z" fill="url(#uniform)"/>
+    <path d="M 384 760 L 388 910 L 432 910 L 436 755 Z" fill="#eef0ea"/>
+    <path d="M 386 785 L 434 790 M 387 820 L 434 825 M 388 855 L 433 860 M 388 888 L 432 890" stroke="#525668" stroke-width="3"/>
+    <path d="M 388 910 L 384 962 Q 422 975 456 960 L 436 910 Z" fill="#231f2e"/>
+    <path d="M 378 960 Q 420 976 460 958 L 462 970 Q 420 988 382 972 Z" fill="#c9ae82"/>
+    <path d="M 400 952 Q 420 936 434 952" fill="none" stroke="#4a6638" stroke-width="6"/>
+    
+    <!-- Broad muscular torso -->
+    <path d="M 225 275 L 435 275 L 418 575 L 242 575 Z" fill="url(#uniform)"/>
+    <path d="M 222 268 L 128 450 L 198 486 L 258 378 L 246 660 L 306 668 L 300 282 Z" fill="url(#oliveHaori)"/>
+    <path d="M 438 268 L 532 450 L 462 486 L 402 378 L 414 660 L 354 668 L 360 282 Z" fill="url(#oliveHaori)"/>
+    <!-- Giant red Buddhist prayer beads around neck -->
+    <circle cx="282" cy="312" r="14" fill="#c92e36"/><circle cx="305" cy="328" r="14" fill="#c92e36"/>
+    <circle cx="330" cy="335" r="15" fill="#c92e36"/><circle cx="355" cy="328" r="14" fill="#c92e36"/>
+    <circle cx="378" cy="312" r="14" fill="#c92e36"/>
+    <!-- Chained Spiked Flail & Broad Axe -->
+    <path d="M 155 462 Q 330 565 510 458" fill="none" stroke="#5a606e" stroke-width="11" stroke-dasharray="16 10"/>
+    <circle cx="115" cy="365" r="46" fill="#4e5462"/>
+    <polygon points="115,296 104,322 126,322" fill="#828a9c"/>
+    <polygon points="48,365 74,354 74,376" fill="#828a9c"/>
+    <polygon points="182,365 156,354 156,376" fill="#828a9c"/>
+    <path d="M 525 465 L 555 280 L 620 330 Q 605 405 540 420 Z" fill="url(#steel)"/>
+    <ellipse cx="164" cy="468" rx="24" ry="20" fill="url(#skin)"/>
+    <ellipse cx="502" cy="462" rx="24" ry="20" fill="url(#skin)"/>
+    <!-- Head with forehead scar & blind white eyes -->
+    <rect x="300" y="226" width="60" height="54" rx="16" fill="url(#skin)"/>
+    <path d="M 270 148 Q 270 246 330 256 Q 390 246 390 148 Q 390 92 330 92 Q 270 92 270 148 Z" fill="url(#skin)"/>
+    <path d="M 284 146 L 376 142" stroke="#b57a68" stroke-width="5"/>
+    <ellipse cx="305" cy="182" rx="12" ry="9" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+    <ellipse cx="355" cy="182" rx="12" ry="9" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+    <path d="M 268 158 Q 268 88 330 84 Q 392 88 392 158 L 376 126 L 330 116 L 284 126 Z" fill="#181620"/>
+    
+  </g>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <pattern id="tanjiroCheck" width="44" height="44" patternUnits="userSpaceOnUse">
+      <rect width="44" height="44" fill="#1aa36b"/>
+      <rect width="22" height="22" fill="#15151c"/>
+      <rect x="22" y="22" width="22" height="22" fill="#15151c"/>
+    </pattern>
+    <linearGradient id="tanHair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#201016"/>
+      <stop offset="70%" stop-color="#5c1624"/>
+      <stop offset="100%" stop-color="#801d2e"/>
+    </linearGradient>
+    <linearGradient id="flameBlade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1c1c24"/>
+      <stop offset="70%" stop-color="#3a1c1e"/>
+      <stop offset="100%" stop-color="#ff6b2b"/>
+    </linearGradient>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    <!-- Flowing checkered haori back -->
+    <path d="M 215 305 L 115 650 Q 200 685 265 655 L 285 335 Z" fill="url(#tanjiroCheck)"/>
+    <path d="M 445 305 L 545 640 Q 465 678 400 650 L 375 335 Z" fill="url(#tanjiroCheck)"/>
+    
+    <!-- Left leg -->
+    <path d="M 275 560 L 222 755 L 292 765 L 324 615 Z" fill="url(#uniform)"/>
+    <path d="M 232 755 L 236 910 L 280 910 L 284 760 Z" fill="#f2efe8"/>
+    <path d="M 234 790 L 282 785 M 234 825 L 281 820 M 235 860 L 280 855 M 236 890 L 280 888" stroke="#525668" stroke-width="3"/>
+    <path d="M 232 910 L 212 960 Q 246 975 284 962 L 280 910 Z" fill="#231f2e"/>
+    <path d="M 208 958 Q 248 976 290 960 L 286 972 Q 248 988 206 970 Z" fill="#c9ae82"/>
+    <path d="M 234 952 Q 248 936 268 952" fill="none" stroke="#941d2e" stroke-width="6"/>
+    <!-- Right leg -->
+    <path d="M 385 560 L 438 755 L 368 765 L 336 615 Z" fill="url(#uniform)"/>
+    <path d="M 376 760 L 380 910 L 424 910 L 428 755 Z" fill="#f2efe8"/>
+    <path d="M 378 785 L 426 790 M 379 820 L 426 825 M 380 855 L 425 860 M 380 888 L 424 890" stroke="#525668" stroke-width="3"/>
+    <path d="M 380 910 L 376 962 Q 414 975 448 960 L 428 910 Z" fill="#231f2e"/>
+    <path d="M 370 960 Q 412 976 452 958 L 454 970 Q 412 988 374 972 Z" fill="#c9ae82"/>
+    <path d="M 392 952 Q 412 936 426 952" fill="none" stroke="#941d2e" stroke-width="6"/>
+    
+    <!-- Uniform torso -->
+    <path d="M 250 300 L 410 300 L 395 570 L 265 570 Z" fill="#2c1d22"/>
+    <rect x="262" y="520" width="136" height="26" rx="4" fill="#f0ece4"/>
+    <rect x="316" y="516" width="28" height="34" rx="3" fill="#c8cbd6"/>
+    <!-- Buttons -->
+    <circle cx="330" cy="360" r="6" fill="#d9b44a"/><circle cx="330" cy="405" r="6" fill="#d9b44a"/><circle cx="330" cy="450" r="6" fill="#d9b44a"/>
+    <!-- Haori front lapels & sleeves -->
+    <path d="M 248 292 L 155 430 L 210 475 L 270 395 L 258 630 L 305 640 L 300 302 Z" fill="url(#tanjiroCheck)"/>
+    <path d="M 412 292 L 505 425 L 448 472 L 392 395 L 402 630 L 355 640 L 360 302 Z" fill="url(#tanjiroCheck)"/>
+    <!-- Katana held diagonally across ready to unleash Hinokami Kagura -->
+    <path d="M 235 450 L 585 210 L 598 228 L 248 468 Z" fill="url(#flameBlade)"/>
+    <path d="M 155 505 L 240 448 L 252 466 L 167 523 Z" fill="#1b1822"/>
+    <circle cx="242" cy="458" r="22" fill="#1e1a24" stroke="#d9522c" stroke-width="5"/>
+    <!-- Hands gripping hilt -->
+    <ellipse cx="222" cy="472" rx="22" ry="18" fill="url(#skin)"/>
+    <ellipse cx="186" cy="495" rx="20" ry="17" fill="url(#skin)"/>
+    <!-- Neck & Head -->
+    <rect x="305" y="255" width="50" height="52" rx="14" fill="url(#skin)"/>
+    <!-- Hanafuda Earrings -->
+    <rect x="255" y="242" width="18" height="44" rx="2" fill="#ffffff" stroke-width="3"/>
+    <circle cx="264" cy="256" r="5" fill="#d92b3a" stroke="none"/>
+    <rect x="387" y="242" width="18" height="44" rx="2" fill="#ffffff" stroke-width="3"/>
+    <circle cx="396" cy="256" r="5" fill="#d92b3a" stroke="none"/>
+    <path d="M 272 170 Q 272 272 330 282 Q 388 272 388 170 Q 388 112 330 112 Q 272 112 272 170 Z" fill="url(#skin)"/>
+    <!-- Demon Slayer Flame Scar -->
+    <path d="M 284 152 L 298 136 L 306 156 L 320 144 L 314 174 L 295 168 L 284 182 Z" fill="#9c1f2e" stroke="none"/>
+    
+        <ellipse cx="306" cy="206" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="306" cy="207" rx="8.5" ry="9.5" fill="#8c1d30" stroke="none"/>
+        <circle cx="306" cy="207" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="303" cy="203" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 292 201 Q 306 191 320 202" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 320 181 L 293 195" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+        <ellipse cx="354" cy="206" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="354" cy="207" rx="8.5" ry="9.5" fill="#8c1d30" stroke="none"/>
+        <circle cx="354" cy="207" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="351" cy="203" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 340 201 Q 354 191 368 202" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 340 181 L 367 195" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+      <path d="M 328 222 L 332 228" fill="none" stroke="#9e7866" stroke-width="2.5"/>
+      <path d="M 319 240 Q 330 237 341 241" fill="none" stroke="#14101c" stroke-width="3.2"/>
+    
+    <!-- Spiky Burgundy-Black Hair -->
+    <path d="M 258 212 L 236 162 L 265 148 L 252 104 L 298 112 L 322 72 L 355 106 L 402 92 L 392 138 L 424 152 L 400 205 L 385 170 L 368 186 L 352 146 L 330 176 L 308 145 L 286 184 Z" fill="url(#tanHair)"/>
+    
+  </g>
+</svg>

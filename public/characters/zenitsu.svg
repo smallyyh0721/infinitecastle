@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <linearGradient id="zenHaori" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd52e"/>
+      <stop offset="100%" stop-color="#ff781f"/>
+    </linearGradient>
+    <pattern id="zenTri" width="54" height="54" patternUnits="userSpaceOnUse">
+      <rect width="54" height="54" fill="url(#zenHaori)"/>
+      <polygon points="27,8 44,42 10,42" fill="#ffffff"/>
+    </pattern>
+    <linearGradient id="zenHair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe142"/>
+      <stop offset="75%" stop-color="#ffaa22"/>
+      <stop offset="100%" stop-color="#f05a1a"/>
+    </linearGradient>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    <!-- Dynamic crouching Thunderclap & Flash haori -->
+    <path d="M 190 340 L 82 640 Q 178 690 278 648 L 290 360 Z" fill="url(#zenTri)"/>
+    <path d="M 455 340 L 568 630 Q 478 680 385 645 L 372 360 Z" fill="url(#zenTri)"/>
+    
+    <!-- Left leg -->
+    <path d="M 275 560 L 200 755 L 270 765 L 324 615 Z" fill="url(#uniform)"/>
+    <path d="M 210 755 L 214 910 L 258 910 L 262 760 Z" fill="#f5f4ee"/>
+    <path d="M 212 790 L 260 785 M 212 825 L 259 820 M 213 860 L 258 855 M 214 890 L 258 888" stroke="#525668" stroke-width="3"/>
+    <path d="M 210 910 L 190 960 Q 224 975 262 962 L 258 910 Z" fill="#231f2e"/>
+    <path d="M 186 958 Q 226 976 268 960 L 264 972 Q 226 988 184 970 Z" fill="#c9ae82"/>
+    <path d="M 212 952 Q 226 936 246 952" fill="none" stroke="#e69a1e" stroke-width="6"/>
+    <!-- Right leg -->
+    <path d="M 385 560 L 460 755 L 390 765 L 336 615 Z" fill="url(#uniform)"/>
+    <path d="M 398 760 L 402 910 L 446 910 L 450 755 Z" fill="#f5f4ee"/>
+    <path d="M 400 785 L 448 790 M 401 820 L 448 825 M 402 855 L 447 860 M 402 888 L 446 890" stroke="#525668" stroke-width="3"/>
+    <path d="M 402 910 L 398 962 Q 436 975 470 960 L 450 910 Z" fill="#231f2e"/>
+    <path d="M 392 960 Q 434 976 474 958 L 476 970 Q 434 988 396 972 Z" fill="#c9ae82"/>
+    <path d="M 414 952 Q 434 936 448 952" fill="none" stroke="#e69a1e" stroke-width="6"/>
+    
+    <!-- Uniform torso (crouched low) -->
+    <path d="M 248 330 L 412 330 L 398 585 L 262 585 Z" fill="url(#uniform)"/>
+    <rect x="260" y="535" width="140" height="24" rx="4" fill="#f5f4ee"/>
+    <!-- Front triangular haori -->
+    <path d="M 246 322 L 152 465 L 215 505 L 268 415 L 254 638 L 306 645 L 300 332 Z" fill="url(#zenTri)"/>
+    <path d="M 414 322 L 508 455 L 448 498 L 392 415 L 406 638 L 354 645 L 360 332 Z" fill="url(#zenTri)"/>
+    <!-- Iaido Quick-Draw Lightning Katana -->
+    <path d="M 190 520 L 620 462 L 624 480 L 194 538 Z" fill="#181822"/>
+    <path d="M 245 516 L 605 468" stroke="#ffe44d" stroke-width="5" stroke-dasharray="18 10"/>
+    <path d="M 105 532 L 192 520 L 195 538 L 108 550 Z" fill="#ffffff"/>
+    <circle cx="195" cy="528" r="20" fill="#ffd447"/>
+    <ellipse cx="174" cy="532" rx="22" ry="18" fill="url(#skin)"/>
+    <ellipse cx="355" cy="502" rx="20" ry="17" fill="url(#skin)"/>
+    <!-- Neck & Head -->
+    <rect x="306" y="280" width="48" height="52" rx="14" fill="url(#skin)"/>
+    <path d="M 274 200 Q 274 298 330 308 Q 386 298 386 200 Q 386 142 330 142 Q 274 142 274 200 Z" fill="url(#skin)"/>
+    
+        <ellipse cx="306" cy="232" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="306" cy="233" rx="8.5" ry="9.5" fill="#e8981a" stroke="none"/>
+        <circle cx="306" cy="233" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="303" cy="229" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 292 227 Q 306 217 320 228" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 320 207 L 293 221" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+        <ellipse cx="354" cy="232" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="354" cy="233" rx="8.5" ry="9.5" fill="#e8981a" stroke="none"/>
+        <circle cx="354" cy="233" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="351" cy="229" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 340 227 Q 354 217 368 228" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 340 207 L 367 221" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+      <path d="M 328 248 L 332 254" fill="none" stroke="#9e7866" stroke-width="2.5"/>
+      <path d="M 319 266 Q 330 263 341 267" fill="none" stroke="#14101c" stroke-width="3.2"/>
+    
+    <!-- Square-cut golden-orange hair -->
+    <path d="M 252 246 L 238 175 L 264 134 L 328 112 L 394 132 L 422 178 L 406 246 L 385 204 L 368 214 L 355 182 L 332 216 L 310 182 L 292 215 L 274 204 Z" fill="url(#zenHair)"/>
+    
+  </g>
+</svg>

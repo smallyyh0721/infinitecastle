@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="1024" viewBox="0 0 660 1024">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8d7"/>
+      <stop offset="100%" stop-color="#ecc6ab"/>
+    </linearGradient>
+    <linearGradient id="paleSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2eff5"/>
+      <stop offset="100%" stop-color="#d5cedd"/>
+    </linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#221f32"/>
+      <stop offset="100%" stop-color="#12101c"/>
+    </linearGradient>
+    <linearGradient id="whiteCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dae6"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8f0ff"/>
+      <stop offset="50%" stop-color="#9ca8be"/>
+      <stop offset="100%" stop-color="#485266"/>
+    </linearGradient>
+    
+    <pattern id="giyuGeo" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#d6a628"/>
+      <polygon points="0,0 24,0 24,24 0,24" fill="#1f8c66"/>
+      <polygon points="24,24 48,24 48,48 24,48" fill="#1f8c66"/>
+      <polygon points="24,0 48,24 24,24" fill="#9e242c"/>
+      <polygon points="0,24 24,48 0,48" fill="#9e242c"/>
+    </pattern>
+    <linearGradient id="waterBlade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c4f0ff"/>
+      <stop offset="50%" stop-color="#48a8f0"/>
+      <stop offset="100%" stop-color="#1b4d8a"/>
+    </linearGradient>
+    
+  </defs>
+  <g stroke="#14101c" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    
+    <!-- Split half-and-half haori back -->
+    <path d="M 218 292 L 128 655 L 272 668 L 282 325 Z" fill="#6e1a28"/>
+    <path d="M 442 292 L 532 655 L 388 668 L 378 325 Z" fill="url(#giyuGeo)"/>
+    
+    <!-- Left leg -->
+    <path d="M 275 560 L 234 755 L 304 765 L 324 615 Z" fill="url(#uniform)"/>
+    <path d="M 244 755 L 248 910 L 292 910 L 296 760 Z" fill="#eff2f8"/>
+    <path d="M 246 790 L 294 785 M 246 825 L 293 820 M 247 860 L 292 855 M 248 890 L 292 888" stroke="#525668" stroke-width="3"/>
+    <path d="M 244 910 L 224 960 Q 258 975 296 962 L 292 910 Z" fill="#231f2e"/>
+    <path d="M 220 958 Q 260 976 302 960 L 298 972 Q 260 988 218 970 Z" fill="#c9ae82"/>
+    <path d="M 246 952 Q 260 936 280 952" fill="none" stroke="#1d385c" stroke-width="6"/>
+    <!-- Right leg -->
+    <path d="M 385 560 L 426 755 L 356 765 L 336 615 Z" fill="url(#uniform)"/>
+    <path d="M 364 760 L 368 910 L 412 910 L 416 755 Z" fill="#eff2f8"/>
+    <path d="M 366 785 L 414 790 M 367 820 L 414 825 M 368 855 L 413 860 M 368 888 L 412 890" stroke="#525668" stroke-width="3"/>
+    <path d="M 368 910 L 364 962 Q 402 975 436 960 L 416 910 Z" fill="#231f2e"/>
+    <path d="M 358 960 Q 400 976 440 958 L 442 970 Q 400 988 362 972 Z" fill="#c9ae82"/>
+    <path d="M 380 952 Q 400 936 414 952" fill="none" stroke="#1d385c" stroke-width="6"/>
+    
+    <!-- Navy Uniform -->
+    <path d="M 252 290 L 408 290 L 394 570 L 266 570 Z" fill="#172038"/>
+    <rect x="264" y="520" width="132" height="26" rx="4" fill="#f0f2f7"/>
+    <rect x="316" y="516" width="28" height="34" rx="3" fill="#c6cbd8"/>
+    <!-- Left solid maroon half, Right geometric half -->
+    <path d="M 250 284 L 155 445 L 218 475 L 268 388 L 256 640 L 306 645 L 302 296 Z" fill="#781d2c"/>
+    <path d="M 410 284 L 505 445 L 442 475 L 392 388 L 404 640 L 354 645 L 358 296 Z" fill="url(#giyuGeo)"/>
+    <!-- Blue Nichirin Katana steady forward -->
+    <path d="M 390 458 L 615 572 L 606 588 L 382 474 Z" fill="url(#waterBlade)"/>
+    <path d="M 308 416 L 386 456 L 378 472 L 300 432 Z" fill="#17243a"/>
+    <ellipse cx="385" cy="465" rx="16" ry="24" fill="#2a3a52" stroke="#6ec6ff" stroke-width="4"/>
+    <ellipse cx="364" cy="454" rx="20" ry="16" fill="url(#skin)"/>
+    <ellipse cx="220" cy="460" rx="19" ry="16" fill="url(#skin)"/>
+    <!-- Neck & Head -->
+    <rect x="306" y="248" width="48" height="50" rx="14" fill="url(#skin)"/>
+    <path d="M 274 166 Q 274 266 330 276 Q 386 266 386 166 Q 386 108 330 108 Q 274 108 274 166 Z" fill="url(#skin)"/>
+    
+        <ellipse cx="306" cy="198" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="306" cy="199" rx="8.5" ry="9.5" fill="#204478" stroke="none"/>
+        <circle cx="306" cy="199" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="303" cy="195" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 292 193 Q 306 183 320 194" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 320 182 L 293 178" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+        <ellipse cx="354" cy="198" rx="13" ry="11" fill="#ffffff" stroke="#14101c" stroke-width="3.5"/>
+        <ellipse cx="354" cy="199" rx="8.5" ry="9.5" fill="#204478" stroke="none"/>
+        <circle cx="354" cy="199" r="5.5" fill="#181224" stroke="none"/>
+        <circle cx="351" cy="195" r="3" fill="#ffffff" stroke="none"/>
+        <path d="M 340 193 Q 354 183 368 194" fill="none" stroke="#14101c" stroke-width="5"/>
+        <path d="M 340 182 L 367 178" fill="none" stroke="#14101c" stroke-width="4.5"/>
+        
+      <path d="M 328 214 L 332 220" fill="none" stroke="#9e7866" stroke-width="2.5"/>
+      <path d="M 319 232 Q 330 229 341 233" fill="none" stroke="#14101c" stroke-width="3.2"/>
+    
+    <!-- Messy spiky black hair + low ponytail -->
+    <path d="M 255 245 L 222 178 L 254 148 L 240 105 L 290 106 L 325 66 L 366 100 L 418 96 L 404 142 L 434 165 L 402 232 L 384 176 L 364 198 L 344 150 L 326 190 L 304 152 L 284 196 Z" fill="#151722"/>
+    
+  </g>
+</svg>
